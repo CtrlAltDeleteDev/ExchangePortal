@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Carter" Version="7.0.0" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Exchange.Portal.ApplicationCore\Exchange.Portal.ApplicationCore.csproj" />
+    </ItemGroup>
+
+</Project>
