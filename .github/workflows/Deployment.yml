@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-    workflow_dispatch:
+  workflow_dispatch:
 
 env:
   NETLIFY_AUTH_TOKEN: 0aA1VcxtCEI2hyqvp9ZzX06_2i-NMktFb1imweFnFes
