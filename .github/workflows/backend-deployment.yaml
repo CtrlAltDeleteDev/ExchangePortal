@@ -26,12 +26,12 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-        
+
       - name: Build project
         run: dotnet build --no-restore
-        
+
       - name: Run unit tests
         run: dotnet test --filter "UnitTest" --no-build --verbosity normal --collect:"XPlat Code Coverage"
-      
+
       - name: Codecov
         uses: codecov/codecov-action@v3
