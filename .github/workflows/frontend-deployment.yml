@@ -54,4 +54,4 @@ jobs:
           name: dist-files
 
       - name: Install netlify-cli
-        run: netlify deploy --site ${{ env.FRONT_END_ENV_SITE_ID }} --auth ${{ env.NETLIFY_AUTH_TOKEN }} --prod --dir ../ExchangePortal/
+        run: netlify deploy --site ${{ secrets.FRONT_END_ENV_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --prod --dir ../ExchangePortal/
