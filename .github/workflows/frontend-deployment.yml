@@ -1,0 +1,57 @@
+name: Deploy front-end project 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/Client/Exchange.Portal.UI/**'
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/Client/Exchange.Portal.UI
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build project
+        run: npm run build
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: src/Client/Exchange.Portal.UI/dist
+          
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install netlify-cli
+        run: npm install netlify-cli -g  
+      
+      - name: Get built artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+
+      - name: Install netlify-cli
+        run: netlify deploy --site ${{ env.FRONT_END_ENV_SITE_ID }} --auth ${{ env.NETLIFY_AUTH_TOKEN }} --prod --dir ../ExchangePortal/
