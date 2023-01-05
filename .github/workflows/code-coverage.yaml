@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'src/Server/**'
+      - 'tests/**'
   
 jobs:
   build:
