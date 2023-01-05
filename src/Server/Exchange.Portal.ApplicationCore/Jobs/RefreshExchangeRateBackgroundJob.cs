@@ -1,5 +1,3 @@
-using Exchange.Portal.ApplicationCore.Interface;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Exchange.Portal.ApplicationCore.Jobs;

@@ -1,10 +1,9 @@
-using Exchange.Portal.ApplicationCore.Interface;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
-public class TransferExchangeRateAccumulation : IExchangeRateAccumulation
+internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
 {
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _timeProvider;
