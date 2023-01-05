@@ -1,10 +1,9 @@
-using Exchange.Portal.ApplicationCore.Interface;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
-public class RefreshRateService : IRefreshRateService
+internal class RefreshRateService : IRefreshRateService
 {
     private readonly IEnumerable<IExchangeRateAccumulation> _exchangeRateAccumulationChain;
     private readonly IDocumentStore _documentStore;
