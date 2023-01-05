@@ -1,14 +1,13 @@
 using System.Net;
 using System.Text.Json;
 using Exchange.Portal.ApplicationCore.Configurations;
-using Exchange.Portal.ApplicationCore.Interface;
 using Exchange.Portal.ApplicationCore.Models;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
-public class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
+internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
 {
     private readonly BinanceClientSettings _clientSettings;
     private readonly IHttpClientFactory _httpClientFactory;
@@ -59,7 +58,7 @@ public class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
                 Id = Guid.NewGuid().ToString(),
                 SymbolFrom = pair.SymbolFrom,
                 SymbolTo = pair.SymbolTo,
-                Price = result.Price,
+                Price = result!.Price,
                 Timestamp = _providerService.GetDateTimeOffsetUTC()
             });
                 

@@ -1,11 +1,9 @@
-using Exchange.Portal.ApplicationCore.Interface;
 using Exchange.Portal.Infrastructure.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
-public class MigrationService : IMigrationService
+internal class MigrationService : IMigrationService
 {
     private readonly IInitiateRateExchange _initiateRateExchange;
     private readonly ApplicationDbContext _applicationDbContext;
@@ -41,13 +39,19 @@ public class MigrationService : IMigrationService
 
             await _roleManager.CreateAsync(adminRole);
 
-            IdentityResult res = await _userManager.CreateAsync(new IdentityUser
+            await _userManager.CreateAsync(new IdentityUser
             {
                 UserName = "Admin",
                 Email = "admin@gmail.com"
             }, "Silvercrown1!");
 
             IdentityUser? user = await _userManager.FindByNameAsync("Admin");
+            
+            if (user is null)
+            {
+                throw new AggregateException();
+            }
+            
             await _userManager.AddToRoleAsync(user, adminRole.Name);
         }
     }

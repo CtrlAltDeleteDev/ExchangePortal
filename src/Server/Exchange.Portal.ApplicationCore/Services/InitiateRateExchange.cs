@@ -1,12 +1,11 @@
 using Exchange.Portal.ApplicationCore.Configurations;
-using Exchange.Portal.ApplicationCore.Interface;
 using Exchange.Portal.ApplicationCore.Models;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
-public class InitiateRateExchange : IInitiateRateExchange
+internal class InitiateRateExchange : IInitiateRateExchange
 {
     private readonly IDocumentStore _documentStore;
     private readonly InitialTokensSettings _tokes;
@@ -35,14 +34,14 @@ public class InitiateRateExchange : IInitiateRateExchange
 
         if (!await _documentStore.QuerySession().Query<PairDocument>().AnyAsync())
         {
-            foreach (Token token in _tokes.Tokens)
+            foreach (string symbol in _tokes.Tokens.Select(token => token.Symbol ))
             {
                 PairDocument[] tokenPairs = _tokes.Tokens
-                    .Where(x => x.Symbol != token.Symbol)
+                    .Where(x => x.Symbol != symbol)
                     .Select(x => new PairDocument
                     {
                         Id = Guid.NewGuid().ToString(),
-                        SymbolFrom = token.Symbol,
+                        SymbolFrom = symbol,
                         SymbolTo = x.Symbol,
                         Configuration = new PairConfiguration(null)
                     })
