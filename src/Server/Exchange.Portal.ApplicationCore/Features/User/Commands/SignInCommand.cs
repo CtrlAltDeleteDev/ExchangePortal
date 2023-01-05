@@ -1,6 +1,3 @@
-using MediatR;
-using Microsoft.AspNetCore.Identity;
-
 namespace Exchange.Portal.ApplicationCore.Features.User.Commands;
 
 public static class SignInCommand

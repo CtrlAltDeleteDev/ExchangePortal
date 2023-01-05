@@ -1,10 +1,3 @@
-using System.Reflection;
-using Exchange.Portal.ApplicationCore.Interface;
-using Exchange.Portal.ApplicationCore.Jobs;
-using Exchange.Portal.ApplicationCore.Services;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Exchange.Portal.ApplicationCore;
 
 public static class ConfigureServices
