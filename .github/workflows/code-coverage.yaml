@@ -5,6 +5,17 @@ on:
   push:
     paths:
       - 'src/Server/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'src/Server/**'
+      - 'tests/**'
+    
+coverage:
+  status:
+    patch:
+      default:
+        target: 80%
   
 jobs:
   build:
