@@ -11,6 +11,11 @@ on:
       - 'src/Server/**'
       - 'tests/**'
     
+coverage:
+  status:
+    patch:
+      default:
+        target: 80%
   
 jobs:
   build:
