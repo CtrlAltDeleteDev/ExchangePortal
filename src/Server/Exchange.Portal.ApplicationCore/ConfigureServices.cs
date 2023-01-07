@@ -1,3 +1,6 @@
+using Exchange.Portal.ApplicationCore.Configurations;
+using Telegram.Bot;
+
 namespace Exchange.Portal.ApplicationCore;
 
 public static class ConfigureServices
@@ -5,6 +8,14 @@ public static class ConfigureServices
     public static IServiceCollection AddApplication(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddHttpClient();
+        serviceCollection.AddHttpClient("TelegramBotClient")
+            .AddTypedClient<ITelegramBotClient>((httpClient, sp) =>
+            {
+                TelegramBotSettings botConfig = sp.GetRequiredService<TelegramBotSettings>();
+                TelegramBotClientOptions options = new(botConfig.Token);
+                return new TelegramBotClient(options, httpClient);
+            });
+        
         
         serviceCollection.AddMediatR(Assembly.GetExecutingAssembly());
 

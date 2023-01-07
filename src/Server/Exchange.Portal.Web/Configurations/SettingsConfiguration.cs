@@ -11,7 +11,8 @@ internal static class SettingsConfiguration
         services.AddScoped(cfg => cfg.GetService<IOptionsSnapshot<ApiConfigurationSettings>>()!.Value.InitialTokens);
         services.AddScoped(cfg => cfg.GetService<IOptionsSnapshot<ApiConfigurationSettings>>()!.Value.BinanceClient);
         services.AddScoped(cfg => cfg.GetService<IOptionsSnapshot<ApiConfigurationSettings>>()!.Value.ConnectionStrings);
-        
+        services.AddScoped(cfg => cfg.GetService<IOptionsSnapshot<ApiConfigurationSettings>>()!.Value.TelegramBot);
+
         return configuration.Get<ApiConfigurationSettings>();
     }
 }

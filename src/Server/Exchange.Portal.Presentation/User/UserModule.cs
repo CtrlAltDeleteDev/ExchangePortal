@@ -11,7 +11,7 @@ public class UserModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/login", HandlerAsync);
+        app.MapPost("api/login", HandlerAsync);
     }
 
     private async Task<IResult> HandlerAsync(UserLoginRequest request, ISender sender)
