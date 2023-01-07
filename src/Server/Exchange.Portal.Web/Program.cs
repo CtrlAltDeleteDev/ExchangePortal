@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Add services to the container.
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 ApiConfigurationSettings settings = builder.Services.AddSettings(builder.Configuration);
 
@@ -28,13 +30,14 @@ migrationService.MigrateAsync().GetAwaiter().GetResult();
 if (app.Environment.IsDevelopment())
 {
     app.UseCors(policyBuilder => policyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 else
 {
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 
 app.MapCarter();
 
