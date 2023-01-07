@@ -1,6 +1,6 @@
 namespace Exchange.Portal.Infrastructure.Documents;
 
-public class PairDocument
+public sealed class PairDocument
 {
     public string Id { get; set; } = string.Empty;
 

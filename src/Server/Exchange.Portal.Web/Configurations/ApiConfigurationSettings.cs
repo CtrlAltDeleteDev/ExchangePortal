@@ -9,4 +9,6 @@ internal class ApiConfigurationSettings
     public ConnectionStringsSettings ConnectionStrings { get; set; } = new();
 
     public BinanceClientSettings BinanceClient { get; set; } = new();
+
+    public TelegramBotSettings TelegramBot { get; set; } = new();
 }
