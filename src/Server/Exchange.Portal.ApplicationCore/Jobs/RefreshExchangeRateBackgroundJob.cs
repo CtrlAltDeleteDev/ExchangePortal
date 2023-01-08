@@ -1,14 +1,20 @@
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Jobs;
 
 public class RefreshExchangeRateBackgroundJob : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
+    private readonly ILogger<RefreshExchangeRateBackgroundJob> _logger;
+
     private const int DelayInMilliseconds = 10000;
-    public RefreshExchangeRateBackgroundJob(IServiceProvider serviceProvider)
+
+    public RefreshExchangeRateBackgroundJob(IServiceProvider serviceProvider,
+        ILogger<RefreshExchangeRateBackgroundJob> logger)
     {
         _serviceProvider = serviceProvider;
+        _logger = logger;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -27,9 +33,7 @@ public class RefreshExchangeRateBackgroundJob : BackgroundService
         }
         catch (Exception e)
         {
-            //use logger
-            Console.WriteLine(e);
-            throw;
+            _logger.LogError(e, "The refresh exchange rate background job has failed");
         }
     }
 }

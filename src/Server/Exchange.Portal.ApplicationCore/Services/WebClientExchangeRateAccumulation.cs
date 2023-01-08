@@ -4,6 +4,7 @@ using Exchange.Portal.ApplicationCore.Configurations;
 using Exchange.Portal.ApplicationCore.Models;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
+using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
@@ -13,16 +14,19 @@ internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _providerService;
+    private readonly ILogger<WebClientExchangeRateAccumulation> _logger;
 
     public WebClientExchangeRateAccumulation(BinanceClientSettings clientSettings, 
         IHttpClientFactory httpClientFactory,
         IDocumentStore documentStore, 
-        ITimeProviderService providerService)
+        ITimeProviderService providerService, 
+        ILogger<WebClientExchangeRateAccumulation> logger)
     {
         _clientSettings = clientSettings;
         _httpClientFactory = httpClientFactory;
         _documentStore = documentStore;
         _providerService = providerService;
+        _logger = logger;
     }
 
     public async Task ExecuteAsync(IAsyncEnumerable<PairDocument> pairs, CancellationToken stoppingToken)
@@ -37,9 +41,12 @@ internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
                 HttpMethod.Get,
                 _clientSettings.Url + pair.SymbolFrom.ToUpperInvariant() + pair.SymbolTo.ToUpperInvariant());
 
-            var httpResponseMessage = await client.SendAsync(httpRequestMessage, stoppingToken);
+            HttpResponseMessage httpResponseMessage = await client.SendAsync(httpRequestMessage, stoppingToken);
             if (httpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
             {
+                _logger.LogInformation("Too many request has been thrown for {SymbolFrom} <-> {SymbolTo}",
+                    pair.SymbolFrom, pair.SymbolTo);
+                
                 await Task.Delay(2000, stoppingToken);
                 httpResponseMessage = await client.SendAsync(httpRequestMessage, stoppingToken);
             }
@@ -84,6 +91,9 @@ internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
             session.Store(rates.ToArray());
             await session.SaveChangesAsync(stoppingToken);
 
+            _logger.LogDebug("Pair with {SymbolFrom} <-> {SymbolTo} has been processed", pair.SymbolFrom,
+                pair.SymbolTo);
+            
             await Task.Delay(500, stoppingToken);
         }
     }
