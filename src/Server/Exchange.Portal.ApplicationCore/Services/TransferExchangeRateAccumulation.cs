@@ -1,5 +1,6 @@
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
+using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
@@ -7,13 +8,17 @@ internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
 {
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _timeProvider;
+    private readonly ILogger<TransferExchangeRateAccumulation> _logger;
 
     private const string USDT = nameof(USDT);
 
-    public TransferExchangeRateAccumulation(IDocumentStore documentStore, ITimeProviderService timeProvider)
+    public TransferExchangeRateAccumulation(IDocumentStore documentStore, 
+        ITimeProviderService timeProvider,
+        ILogger<TransferExchangeRateAccumulation> logger)
     {
         _documentStore = documentStore;
         _timeProvider = timeProvider;
+        _logger = logger;
     }
 
     public async Task ExecuteAsync(IAsyncEnumerable<PairDocument> pairs, CancellationToken stoppingToken)
@@ -45,6 +50,9 @@ internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
             session.Store(newTransferRate);
             session.Store(pair);
             await session.SaveChangesAsync(stoppingToken);
+
+            _logger.LogDebug("Pair with {SymbolFrom} <-> {SymbolTo} has been processed", pair.SymbolFrom,
+                pair.SymbolTo);
         }
     }
 }

@@ -4,6 +4,7 @@ using Exchange.Portal.ApplicationCore.Consts;
 using Exchange.Portal.ApplicationCore.Extensions;
 using Exchange.Portal.Infrastructure.Documents;
 using Marten;
+using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 
 namespace Exchange.Portal.ApplicationCore.Features.Payment.Command;
@@ -18,12 +19,14 @@ public static class CreatePaymentCommand
         private readonly ITelegramBotClient _telegramBotClient;
         private readonly TelegramBotSettings _botSettings;
         private readonly IDocumentStore _documentStore;
+        private readonly ILogger<Handler> _logger;
 
-        public Handler(ITelegramBotClient telegramBotClient, TelegramBotSettings botSettings, IDocumentStore documentStore)
+        public Handler(ITelegramBotClient telegramBotClient, TelegramBotSettings botSettings, IDocumentStore documentStore, ILogger<Handler> logger)
         {
             _telegramBotClient = telegramBotClient;
             _botSettings = botSettings;
             _documentStore = documentStore;
+            _logger = logger;
         }
 
         public async Task<Unit> Handle(Payment request, CancellationToken cancellationToken)
@@ -42,6 +45,8 @@ public static class CreatePaymentCommand
                 cancellationToken: cancellationToken);
 
             await Task.WhenAll(saveChangesTask, telegramSendTask);
+            
+            _logger.LogInformation("Payment order is created, telegram message has been sent");
 
             return Unit.Value;
         }
