@@ -6,15 +6,9 @@ on:
     paths:
       - 'src/Server/**'
       - 'tests/**'
-  pull_request:
-    branches:
-      - 'main'
-    paths:
-      - 'src/Server/**'
-      - 'tests/**'
   
 jobs:
-  build:
+  Scan:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -33,3 +27,5 @@ jobs:
         with:
           fail_ci_if_error: true
           verbose: true
+    
+    Test:
