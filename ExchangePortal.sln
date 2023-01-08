@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		.github\workflows\frontend-deployment.yml = .github\workflows\frontend-deployment.yml
 		.github\workflows\backend-deployment.yaml = .github\workflows\backend-deployment.yaml
 		.github\workflows\code-coverage.yaml = .github\workflows\code-coverage.yaml
+		.github\workflows\backend-build.yaml = .github\workflows\backend-build.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{60F9D035-0872-47DC-8D38-EFD833CF7DAA}"
