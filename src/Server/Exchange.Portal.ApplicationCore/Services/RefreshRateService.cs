@@ -20,12 +20,19 @@ internal class RefreshRateService : IRefreshRateService
     {
         await using var session = _documentStore.LightweightSession();
 
-        IAsyncEnumerable<PairDocument> pairs = session.Query<PairDocument>()
+        IQueryable<PairDocument> pairsQueryable = session.Query<PairDocument>()
             .Where(x => !x.Configuration.LastRefresh.HasValue ||
                         x.Configuration.LastRefresh.Value.AddMinutes(x.Configuration.RefreshInterval) <
-                        _timeProvider.GetDateTimeOffsetUTC())
-            .ToAsyncEnumerable(cancellationToken);
+                        _timeProvider.GetDateTimeOffsetUTC());
 
+        if (!await pairsQueryable.AnyAsync(cancellationToken))
+        {
+            return;
+        }
+        
+        IAsyncEnumerable<PairDocument> pairs = pairsQueryable
+            .ToAsyncEnumerable(cancellationToken);
+        
         foreach (var exchangeRateAccumulation in _exchangeRateAccumulationChain)
         {
             await exchangeRateAccumulation.ExecuteAsync(pairs, cancellationToken);
