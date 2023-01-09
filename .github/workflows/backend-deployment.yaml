@@ -7,7 +7,7 @@ on:
       - 'src/Server/**'
 
 env:
-  HEROKU_API_KEY: "d578f216-5d92-4857-9153-0935c269c516"
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_DEV }}
 
 jobs:
   deploy:
@@ -16,11 +16,6 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-        
-      - name: step 1
-        env:
-          API_KEY: ${{ secrets.HEROKU_API_KEY_DEV }}
-        run: echo "The API key is:${{env.API_KEY}}"
       
       - name: Docker login
         run: docker login --username=_ --password=${{ env.HEROKU_API_KEY }} registry.heroku.com
