@@ -17,4 +17,4 @@ RUN dotnet publish "Exchange.Portal.Web.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Exchange.Portal.Web.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Exchange.Portal.Web.dll
