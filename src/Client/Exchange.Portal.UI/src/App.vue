@@ -30,7 +30,7 @@
           </div>
         </a>
         <p class="footer-info-text margin-top-50">
-          © 2018-2022 Globalexchange.com — electronic currency exchange service.
+          ©2023 Globalexchange.com — electronic currency exchange service.
         </p>
       </div>
 
