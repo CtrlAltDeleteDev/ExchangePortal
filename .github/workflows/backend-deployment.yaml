@@ -7,7 +7,7 @@ on:
       - 'src/Server/**'
 
 env:
-  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_DEV }}
+  HEROKU_API_KEY: "d578f216-5d92-4857-9153-0935c269c516"
 
 jobs:
   deploy:
