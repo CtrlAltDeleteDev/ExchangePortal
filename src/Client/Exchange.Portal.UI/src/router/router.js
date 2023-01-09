@@ -12,10 +12,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/',
-    component: Main,
-  },
-  {
     path: '/preview',
     component: PreviewOrder,
   },
@@ -50,6 +46,10 @@ const routes = [
   {
     path: '/adminka',
     component: Login,
+  },
+  {
+    path: '/',
+    component: Main,
   },
 ];
 
