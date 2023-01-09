@@ -8,6 +8,7 @@ import CreateOrder from '@/pages/CreateOrder';
 import ReadyOrder from '@/pages/ReadyOrder';
 import CanceledOrder from '@/pages/CanceledOrder';
 import PaidOrder from '@/pages/PaidOrder';
+import NotFound from '@/pages/NotFound';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
@@ -51,6 +52,7 @@ const routes = [
     path: '/',
     component: Main,
   },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];
 
 const router = createRouter({
