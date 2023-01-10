@@ -1,7 +1,3 @@
-using Exchange.Portal.Infrastructure.Documents;
-using Marten;
-using Microsoft.Extensions.Logging;
-
 namespace Exchange.Portal.ApplicationCore.Services;
 
 internal class RefreshRateService : IRefreshRateService

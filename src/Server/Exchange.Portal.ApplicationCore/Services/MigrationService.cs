@@ -1,6 +1,5 @@
 using Exchange.Portal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 

@@ -1,10 +1,6 @@
 using System.Net;
 using System.Text.Json;
-using Exchange.Portal.ApplicationCore.Configurations;
 using Exchange.Portal.ApplicationCore.Models;
-using Exchange.Portal.Infrastructure.Documents;
-using Marten;
-using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 

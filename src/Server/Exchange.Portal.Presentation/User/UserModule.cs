@@ -1,13 +1,6 @@
-using Carter;
-using Exchange.Portal.ApplicationCore.Features.User.Commands;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-
 namespace Exchange.Portal.Presentation.User;
 
-public class UserModule : ICarterModule
+internal sealed class UserModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
