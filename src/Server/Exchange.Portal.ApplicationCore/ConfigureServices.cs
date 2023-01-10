@@ -1,6 +1,3 @@
-using Exchange.Portal.ApplicationCore.Configurations;
-using Telegram.Bot;
-
 namespace Exchange.Portal.ApplicationCore;
 
 public static class ConfigureServices

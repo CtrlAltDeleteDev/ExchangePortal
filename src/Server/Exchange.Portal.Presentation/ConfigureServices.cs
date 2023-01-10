@@ -1,6 +1,3 @@
-using Carter;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Exchange.Portal.Presentation;
 
 public static class ConfigureServices

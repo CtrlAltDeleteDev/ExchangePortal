@@ -1,20 +1,11 @@
-using System.Text;
-using Exchange.Portal.ApplicationCore.Configurations;
-using Exchange.Portal.ApplicationCore.Consts;
-using Exchange.Portal.ApplicationCore.Extensions;
-using Exchange.Portal.Infrastructure.Documents;
-using Marten;
-using Microsoft.Extensions.Logging;
-using Telegram.Bot;
-
 namespace Exchange.Portal.ApplicationCore.Features.Payment.Command;
 
-public static class CreatePaymentCommand
+public static class CreatePayment
 {
     public record Payment(string Id, string SymbolFrom, decimal AmountFrom, string SymbolTo, decimal AmountTo,
         DateTimeOffset CreatedAt, string TransferWallet, string ClientEmail, string ClientWallet) : IRequest<Unit>;
     
-    public class Handler : IRequestHandler<Payment, Unit>
+    internal sealed class Handler : IRequestHandler<Payment, Unit>
     {
         private readonly ITelegramBotClient _telegramBotClient;
         private readonly TelegramBotSettings _botSettings;

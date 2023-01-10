@@ -26,7 +26,8 @@ public static class ConfigureServices
             options.RegisterDocumentType<TokenDocument>();
             options.RegisterDocumentType<PairDocument>();
             options.RegisterDocumentType<ExchangeRateDocument>();
-            
+            options.RegisterDocumentType<InterestRateDocument>();
+            options.RegisterDocumentType<ReviewDocument>();
         }).ApplyAllDatabaseChangesOnStartup();
         
         return serviceCollection;
