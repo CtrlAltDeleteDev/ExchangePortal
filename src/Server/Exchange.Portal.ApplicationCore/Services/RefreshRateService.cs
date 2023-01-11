@@ -24,8 +24,7 @@ internal class RefreshRateService : IRefreshRateService
 
         IQueryable<PairDocument> pairsQueryable = session.Query<PairDocument>()
             .Where(x => !x.Configuration.LastRefresh.HasValue ||
-                        x.Configuration.LastRefresh.Value.AddMinutes(x.Configuration.RefreshInterval) <
-                        _timeProvider.GetDateTimeOffsetUTC());
+                        x.Configuration.NextRun < _timeProvider.GetDateTimeOffsetUTC());
 
         if (!await pairsQueryable.AnyAsync(cancellationToken))
         {
