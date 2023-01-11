@@ -21,7 +21,7 @@ public static class ConfigureServices
         {
             options.Connection(connectionString);
             
-            options.AutoCreateSchemaObjects = AutoCreate.All;
+            options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
 
             options.RegisterDocumentType<TokenDocument>();
             options.RegisterDocumentType<PairDocument>();
