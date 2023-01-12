@@ -1,7 +1,7 @@
 using Exchange.Portal.ApplicationCore.HttpClients;
 using Refit;
 
-namespace Exchange.Portal.ApplicationCore.Services;
+namespace Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 
 internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
 {

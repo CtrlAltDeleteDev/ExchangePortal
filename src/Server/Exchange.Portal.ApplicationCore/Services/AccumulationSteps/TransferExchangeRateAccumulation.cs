@@ -1,4 +1,4 @@
-namespace Exchange.Portal.ApplicationCore.Services;
+namespace Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 
 internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
 {
