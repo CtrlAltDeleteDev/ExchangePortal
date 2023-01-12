@@ -12,6 +12,7 @@ public class TimeProviderServiceTests
         DateTimeOffset result = _sut.GetDateTimeOffsetUTC();
 
         // assert
+        // test
         result.UtcDateTime.Kind.Should().Be(DateTimeKind.Utc);
     }
 }
