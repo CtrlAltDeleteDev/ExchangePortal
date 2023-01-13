@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using Exchange.Portal.ApplicationCore.HttpClients;
+using Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 using Polly;
 using Polly.Extensions.Http;
 using Refit;
@@ -21,8 +22,10 @@ public static class ConfigureServices
         serviceCollection.AddScoped<IExchangeRateAccumulation, WebClientExchangeRateAccumulation>();
         serviceCollection.AddScoped<IExchangeRateAccumulation, TransferExchangeRateAccumulation>();
         serviceCollection.AddScoped<IMigrationService, MigrationService>();
+        serviceCollection.AddScoped<ICleanupRateService, CleanupRateService>();
 
         serviceCollection.AddHostedService<RefreshExchangeRateBackgroundJob>();
+        serviceCollection.AddHostedService<RateCleanUpBackgroundJob>();
 
         return serviceCollection;
     }

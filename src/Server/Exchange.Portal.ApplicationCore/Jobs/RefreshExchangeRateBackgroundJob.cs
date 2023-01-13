@@ -2,7 +2,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Exchange.Portal.ApplicationCore.Jobs;
 
-public class RefreshExchangeRateBackgroundJob : BackgroundService
+internal class RefreshExchangeRateBackgroundJob : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<RefreshExchangeRateBackgroundJob> _logger;
