@@ -2,13 +2,13 @@ namespace Exchange.Portal.ApplicationCore.Services;
 
 internal class RefreshRateService : IRefreshRateService
 {
-    private readonly IEnumerable<IExchangeRateAccumulation> _exchangeRateAccumulationChain;
+    private readonly IEnumerable<IExchangeRateAccumulator> _exchangeRateAccumulationChain;
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _timeProvider;
     private readonly ILogger<RefreshRateService> _logger;
 
     public RefreshRateService(IDocumentStore documentStore,
-        IEnumerable<IExchangeRateAccumulation> exchangeRateAccumulationChain, 
+        IEnumerable<IExchangeRateAccumulator> exchangeRateAccumulationChain, 
         ITimeProviderService timeProvider,
         ILogger<RefreshRateService> logger)
     {
@@ -35,7 +35,7 @@ internal class RefreshRateService : IRefreshRateService
         IAsyncEnumerable<PairDocument> pairs = pairsQueryable
             .ToAsyncEnumerable(cancellationToken);
         
-        foreach (IExchangeRateAccumulation exchangeRateAccumulation in _exchangeRateAccumulationChain)
+        foreach (IExchangeRateAccumulator exchangeRateAccumulation in _exchangeRateAccumulationChain)
         {
             _logger.LogDebug("Starting processing pairs");
             await exchangeRateAccumulation.ExecuteAsync(pairs, cancellationToken);

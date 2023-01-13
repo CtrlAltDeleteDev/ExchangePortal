@@ -16,7 +16,7 @@ internal class CleanupRateService : ICleanupRateService
         _logger.LogDebug("Cleanup process starting");
         try
         {
-            await using var session = _documentStore.LightweightSession();
+            await using IDocumentSession session = _documentStore.LightweightSession();
 
             session
                 .DeleteWhere<ExchangeRateDocument>(x => x.Timestamp < limitDateTimeOffset);

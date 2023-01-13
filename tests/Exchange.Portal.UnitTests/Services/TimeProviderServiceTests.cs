@@ -1,4 +1,4 @@
-namespace Exchange.Portal.UnitTests;
+namespace Exchange.Portal.UnitTests.Services;
 
 [UnitTest]
 public class TimeProviderServiceTests

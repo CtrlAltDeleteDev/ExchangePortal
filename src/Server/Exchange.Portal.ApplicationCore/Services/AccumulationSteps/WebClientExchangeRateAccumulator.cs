@@ -3,17 +3,17 @@ using Refit;
 
 namespace Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 
-internal class WebClientExchangeRateAccumulation : IExchangeRateAccumulation
+internal class WebClientExchangeRateAccumulator : IExchangeRateAccumulator
 {
     private readonly IBinanceClient _binanceClient;
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _providerService;
-    private readonly ILogger<WebClientExchangeRateAccumulation> _logger;
+    private readonly ILogger<WebClientExchangeRateAccumulator> _logger;
 
-    public WebClientExchangeRateAccumulation(
+    public WebClientExchangeRateAccumulator(
         IDocumentStore documentStore,
         ITimeProviderService providerService,
-        ILogger<WebClientExchangeRateAccumulation> logger, IBinanceClient binanceClient)
+        ILogger<WebClientExchangeRateAccumulator> logger, IBinanceClient binanceClient)
     {
         _documentStore = documentStore;
         _providerService = providerService;
