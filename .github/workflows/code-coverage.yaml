@@ -20,7 +20,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Run unit tests
-        run: dotnet test --filter "UnitTest" --verbosity normal --collect:"XPlat Code Coverage"
+        run: dotnet test --verbosity normal --collect:"XPlat Code Coverage"
 
       - name: Upload code coverage
         uses: codecov/codecov-action@v3
