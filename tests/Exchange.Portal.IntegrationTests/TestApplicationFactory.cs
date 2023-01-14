@@ -8,7 +8,7 @@ internal sealed class TestApplicationFactory : WebApplicationFactory<Program>
     {
         _connectionString = connectionString;
     }
-    
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureServices(collection =>

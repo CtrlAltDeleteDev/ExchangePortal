@@ -1,6 +1,6 @@
 namespace Exchange.Portal.Presentation.Token;
 
-internal sealed class TokenModule : ICarterModule
+public sealed class TokenModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {

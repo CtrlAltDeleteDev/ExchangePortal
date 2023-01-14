@@ -5,11 +5,9 @@ public class SliceFixtureCollection : ICollectionFixture<SliceFixture> { }
 
 public sealed class SliceFixture : IAsyncLifetime
 {
-    private IServiceProvider _serviceProvider;
     private TestApplicationFactory _factory;
-
     private readonly PostgreSqlTestcontainer _testContainer;
-    
+
     public SliceFixture()
     {
         ITestcontainersBuilder<PostgreSqlTestcontainer>? testContainerBuilder = new TestcontainersBuilder<PostgreSqlTestcontainer>()
@@ -30,14 +28,15 @@ public sealed class SliceFixture : IAsyncLifetime
         await _testContainer.StartAsync();
         
         _factory = new TestApplicationFactory(_testContainer.ConnectionString);
-        _serviceProvider = _factory.Services;
     }
     
     public T GetScoped<T>() where T: class
     {
-       return _serviceProvider.CreateScope().ServiceProvider.GetRequiredService<T>();
-    } 
+       return _factory.Services.CreateScope().ServiceProvider.GetRequiredService<T>();
+    }
 
+    public HttpClient CreateClient() => _factory.CreateClient();
+    
     public async Task DisposeAsync()
     {
         await _testContainer.StopAsync();

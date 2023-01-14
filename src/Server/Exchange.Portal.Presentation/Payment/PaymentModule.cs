@@ -1,13 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Exchange.Portal.Presentation.Payment;
 
-internal sealed class PaymentModule : ICarterModule
+public sealed class PaymentModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/payment", HandlerAsync);
     }
 
-    private async Task<IResult> HandlerAsync(PaymentRequest request, ISender sender)
+    private async Task<IResult> HandlerAsync([FromBody]PaymentRequest request, ISender sender)
     {
         var payment = new CreatePayment.Payment(request.Id, request.SymbolFrom, request.AmountFrom,
             request.SymbolTo, request.AmountTo, request.CreatedAt, request.TransferWallet, request.ClientEmail,
