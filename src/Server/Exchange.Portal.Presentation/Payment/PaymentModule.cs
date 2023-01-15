@@ -1,3 +1,5 @@
+using Exchange.Portal.ApplicationCore.Features.Payment.Command.Create;
+
 namespace Exchange.Portal.Presentation.Payment;
 
 internal sealed class PaymentModule : ICarterModule
@@ -9,7 +11,7 @@ internal sealed class PaymentModule : ICarterModule
 
     private async Task<IResult> HandlerAsync(PaymentRequest request, ISender sender)
     {
-        var payment = new CreatePayment.Payment(request.Id, request.SymbolFrom, request.AmountFrom,
+        var payment = new CreatePaymentOrderCommand(request.Id, request.SymbolFrom, request.AmountFrom,
             request.SymbolTo, request.AmountTo, request.CreatedAt, request.TransferWallet, request.ClientEmail,
             request.ClientWallet);
         

@@ -12,8 +12,8 @@ internal sealed class ExchangeRateModule : ICarterModule
             [Required(AllowEmptyStrings = false)] string symbolTo,
             ISender sender) =>
         {
-            ApplicationCore.Models.ExchangeRate exchangeRate =
-                await sender.Send(new ExchangeRateQuery(symbolFrom, symbolTo));
+            var exchangeRate =
+                await sender.Send(new FetchExchangeRateQuery(symbolFrom, symbolTo));
 
             return Results.Ok(exchangeRate);
         });

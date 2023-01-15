@@ -1,16 +1,17 @@
-namespace Exchange.Portal.ApplicationCore.Features.Review.Commands;
+using LanguageExt.Common;
 
+namespace Exchange.Portal.ApplicationCore.Features.Review.Commands.Create;
 
-public class ReviewCommandHandler : IRequestHandler<ReviewCommand, Unit>
+internal class CreateReviewCommandHandler : IRequestHandler<CreateReviewCommand, Result<Unit>>
 {
     private readonly IDocumentStore _documentStore;
 
-    public ReviewCommandHandler(IDocumentStore documentStore)
+    public CreateReviewCommandHandler(IDocumentStore documentStore)
     {
         _documentStore = documentStore;
     }
 
-    public async Task<Unit> Handle(ReviewCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Unit>> Handle(CreateReviewCommand request, CancellationToken cancellationToken)
     {
         await using var session = _documentStore.LightweightSession();
 

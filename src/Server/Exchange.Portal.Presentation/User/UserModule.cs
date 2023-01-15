@@ -9,8 +9,8 @@ internal sealed class UserModule : ICarterModule
 
     private async Task<IResult> HandlerAsync(UserLoginRequest request, ISender sender)
     {
-        SignInCommand.User user = new SignInCommand.User(request.Login, request.Password);
-        await sender.Send(user);
+        var command = new LoginCommand(request.Login, request.Password);
+        await sender.Send(command);
         return Results.Ok();
     }
 }

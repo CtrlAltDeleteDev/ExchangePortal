@@ -1,10 +1,11 @@
+using LanguageExt.Common;
+
 namespace Exchange.Portal.ApplicationCore.Features.User.Commands;
 
 public static class SignInCommand
 {
-    public record User(string Login, string Password) : IRequest<Unit>;
-    
-    internal sealed class Handler : IRequestHandler<User, Unit>
+
+    internal sealed class Handler : IRequestHandler<LoginCommand, Result<Unit>>
     {
         private readonly SignInManager<IdentityUser> _signInManager;
 
@@ -13,7 +14,7 @@ public static class SignInCommand
             _signInManager = signInManager;
         }
 
-        public async Task<Unit> Handle(User request, CancellationToken cancellationToken)
+        public async Task<Result<Unit>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             IdentityUser? user = await _signInManager.UserManager.FindByNameAsync(request.Login);
             if (user is null)
