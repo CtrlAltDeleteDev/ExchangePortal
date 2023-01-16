@@ -7,8 +7,7 @@ internal class InitiateRateExchange : IInitiateRateExchange
     private readonly IDocumentStore _documentStore;
     private readonly InitialTokensSettings _tokes;
     private readonly ILogger<InitiateRateExchange> _logger;
-
-
+    
     public InitiateRateExchange(InitialTokensSettings tokes, 
         IDocumentStore documentStore,
         ILogger<InitiateRateExchange> logger)

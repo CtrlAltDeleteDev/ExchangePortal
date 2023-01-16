@@ -19,8 +19,8 @@ public static class ConfigureServices
         
         serviceCollection.AddScoped<IInitiateRateExchange, InitiateRateExchange>();
         serviceCollection.AddScoped<IRefreshRateService, RefreshRateService>();
-        serviceCollection.AddScoped<IExchangeRateAccumulation, WebClientExchangeRateAccumulation>();
-        serviceCollection.AddScoped<IExchangeRateAccumulation, TransferExchangeRateAccumulation>();
+        serviceCollection.AddScoped<IExchangeRateAccumulator, WebClientExchangeRateAccumulator>();
+        serviceCollection.AddScoped<IExchangeRateAccumulator, TransferExchangeRateAccumulator>();
         serviceCollection.AddScoped<IMigrationService, MigrationService>();
         serviceCollection.AddScoped<ICleanupRateService, CleanupRateService>();
 

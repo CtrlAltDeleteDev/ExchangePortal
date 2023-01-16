@@ -1,30 +1,36 @@
-using Exchange.Portal.ApplicationCore.Features.Review.Commands;
-using Exchange.Portal.ApplicationCore.Features.Review.Queries;
-using Exchange.Portal.Presentation.Common;
+
+using Microsoft.AspNetCore.Mvc;
+
 namespace Exchange.Portal.Presentation.Review;
 
-internal sealed class ReviewModule : ICarterModule
+public sealed class ReviewModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("api/reviews", async (GetReviewRequest request, ISender sender) =>
-        {
-            ReviewQuery query = new (request.Pagination);
-            IEnumerable<ApplicationCore.Models.Review> reviews = await sender.Send(query);
+        app.MapGet("api/reviews", HandlerGetAsync);
 
-            return Results.Ok(reviews);
-        });
-        
-        app.MapPost("api/review", async (CreateReviewRequest request, ISender sender) =>
+        app.MapPost("api/review", async ([FromBody] CreateReviewRequest request, ISender sender) =>
         {
-            ReviewCommand command = new (request.UserName, request.UserEmail, request.Text, request.CreatedAt);
-            await sender.Send(command);
+            CreateReviewCommand command = new(request.UserName, request.UserEmail, request.Text, request.CreatedAt);
+            Result<Unit> result = await sender.Send(command);
 
-            return Results.Ok();
+            return result.ToOk();
         });
     }
-}
 
-public record GetReviewRequest(OffsetPagination Pagination);
+    //TODO:Amend pagination
+    private async Task<IResult> HandlerGetAsync(ISender sender, int offset = 1, int count = int.MaxValue)
+    {
+        ReviewQuery query = new(new OffsetPagination
+        {
+            Offset = offset,
+            Count = count
+        });
+
+        Result<IReadOnlyCollection<ApplicationCore.Models.Review>> result = await sender.Send(query);
+
+        return result.ToOk();
+    }
+}
 
 public record CreateReviewRequest(string UserName, string UserEmail, string Text, DateTimeOffset CreatedAt);

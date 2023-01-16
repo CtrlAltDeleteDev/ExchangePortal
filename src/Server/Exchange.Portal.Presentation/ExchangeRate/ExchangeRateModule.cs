@@ -3,7 +3,7 @@ using Exchange.Portal.ApplicationCore.Features.ExchangeRate.Queries;
 
 namespace Exchange.Portal.Presentation.ExchangeRate;
 
-internal sealed class ExchangeRateModule : ICarterModule
+public sealed class ExchangeRateModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -12,10 +12,10 @@ internal sealed class ExchangeRateModule : ICarterModule
             [Required(AllowEmptyStrings = false)] string symbolTo,
             ISender sender) =>
         {
-            ApplicationCore.Models.ExchangeRate exchangeRate =
-                await sender.Send(new ExchangeRateQuery(symbolFrom, symbolTo));
+            Result<ApplicationCore.Models.ExchangeRate> exchangeRateResult =
+                await sender.Send(new FetchExchangeRateQuery(symbolFrom, symbolTo));
 
-            return Results.Ok(exchangeRate);
+            return exchangeRateResult.ToOk();
         });
     }
 }

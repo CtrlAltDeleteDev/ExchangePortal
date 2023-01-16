@@ -1,16 +1,16 @@
 namespace Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 
-internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
+internal class TransferExchangeRateAccumulator : IExchangeRateAccumulator
 {
     private readonly IDocumentStore _documentStore;
     private readonly ITimeProviderService _timeProvider;
-    private readonly ILogger<TransferExchangeRateAccumulation> _logger;
+    private readonly ILogger<TransferExchangeRateAccumulator> _logger;
 
     private const string USDT = nameof(USDT);
 
-    public TransferExchangeRateAccumulation(IDocumentStore documentStore, 
+    public TransferExchangeRateAccumulator(IDocumentStore documentStore, 
         ITimeProviderService timeProvider,
-        ILogger<TransferExchangeRateAccumulation> logger)
+        ILogger<TransferExchangeRateAccumulator> logger)
     {
         _documentStore = documentStore;
         _timeProvider = timeProvider;

@@ -8,8 +8,10 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="Exchange.Portal.UnitTests" />
+        <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+        <InternalsVisibleTo Include="Exchange.Portal.IntegrationTests" />
     </ItemGroup>
-
+    
     <ItemGroup>
       <PackageReference Include="Logtail" Version="0.2.2" />
       <PackageReference Include="MediatR" Version="11.1.0" />
