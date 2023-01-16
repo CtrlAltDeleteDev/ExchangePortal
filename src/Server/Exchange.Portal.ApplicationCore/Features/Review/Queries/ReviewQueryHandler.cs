@@ -2,7 +2,7 @@ using Marten.Pagination;
 
 namespace Exchange.Portal.ApplicationCore.Features.Review.Queries;
 
-public class ReviewQueryHandler : IRequestHandler<ReviewQuery, IEnumerable<Models.Review>>
+public class ReviewQueryHandler : IRequestHandler<ReviewQuery, Result<IReadOnlyCollection<Models.Review>>>
 {
     private readonly IDocumentStore _documentStore;
 
@@ -11,7 +11,7 @@ public class ReviewQueryHandler : IRequestHandler<ReviewQuery, IEnumerable<Model
         _documentStore = documentStore;
     }
 
-    public async Task<IEnumerable<Models.Review>> Handle(ReviewQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IReadOnlyCollection<Models.Review>>> Handle(ReviewQuery request, CancellationToken cancellationToken)
     {
         await using IDocumentSession session =_documentStore.LightweightSession();
 
@@ -29,6 +29,6 @@ public class ReviewQueryHandler : IRequestHandler<ReviewQuery, IEnumerable<Model
                 })
             .ToPagedListAsync(request.Pagination.Offset, request.Pagination.Count ,cancellationToken);
 
-        return paginatedReviews;
+        return new Result<IReadOnlyCollection<Models.Review>>(paginatedReviews.ToList());
     }
 }

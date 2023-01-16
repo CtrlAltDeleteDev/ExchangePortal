@@ -1,3 +1,4 @@
+using Exchange.Portal.ApplicationCore.Features.Payment.Command.Create;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Exchange.Portal.Presentation.Payment;
@@ -9,14 +10,15 @@ public sealed class PaymentModule : ICarterModule
         app.MapPost("api/payment", HandlerAsync);
     }
 
-    private async Task<IResult> HandlerAsync([FromBody]PaymentRequest request, ISender sender)
+    private async Task<IResult> HandlerAsync([FromBody] PaymentRequest request, ISender sender)
     {
-        var payment = new CreatePayment.Payment(request.Id, request.SymbolFrom, request.AmountFrom,
+        CreatePaymentOrderCommand payment = new(request.Id, request.SymbolFrom, request.AmountFrom,
             request.SymbolTo, request.AmountTo, request.CreatedAt, request.TransferWallet, request.ClientEmail,
             request.ClientWallet);
-        
-        await sender.Send(payment);
-        return Results.Ok();
+
+        Result<Unit> result = await sender.Send(payment);
+
+        return result.ToOk();
     }
 }
 

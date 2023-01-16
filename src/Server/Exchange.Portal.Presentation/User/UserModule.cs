@@ -1,17 +1,21 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Exchange.Portal.Presentation.User;
 
-internal sealed class UserModule : ICarterModule
+public sealed class UserModule : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/login", HandlerAsync);
     }
 
-    private async Task<IResult> HandlerAsync(UserLoginRequest request, ISender sender)
+    private async Task<IResult> HandlerAsync([FromBody] UserLoginRequest request, ISender sender)
     {
-        SignInCommand.User user = new SignInCommand.User(request.Login, request.Password);
-        await sender.Send(user);
-        return Results.Ok();
+        LoginCommand command = new(request.Login, request.Password);
+
+        Result<Unit> result = await sender.Send(command);
+
+        return result.ToOk();
     }
 }
 
