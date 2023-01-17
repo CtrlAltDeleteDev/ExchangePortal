@@ -1,17 +1,5 @@
 <template>
   <section class="welcome-section">
-    <!-- <div class="chat-form">
-      <a id="chat-link" class="chat-link focus-in-contract">
-        <p class="chat-link-text">Write to us, we are online!</p>
-        <img src="./imgs/leave.png" class="chat-link-img"
-      /></a>
-
-      <div id="chat" class="chat hidden">
-        <div class="chat-messages">sdadas</div>
-        <div class="chat-textarea-wrapper"><textarea></textarea></div>
-      </div>
-    </div> -->
-
     <div class="exchange-container width75persent">
       <h1>Currency exchange</h1>
 

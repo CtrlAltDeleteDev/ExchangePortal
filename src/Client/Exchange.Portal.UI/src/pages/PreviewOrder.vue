@@ -1,17 +1,5 @@
 <template>
   <section class="welcome-section">
-    <!-- <div class="chat-form">
-				<a id="chat-link" class="chat-link focus-in-contract">
-					<p class="chat-link-text"> Write to us, we are online! </p>
-					<img src="../assets/img/leave.png" class="chat-link-img"
-				/></a>
-
-				<div id="chat" class="chat hidden">
-					<div class="chat-messages">sdadas</div>
-					<div class="chat-textarea-wrapper"><textarea></textarea></div>
-				</div>
-			</div> -->
-
     <div class="exchange-container width75persent">
       <h1>Currency exchange</h1>
 
@@ -30,17 +18,20 @@
       <form class="exchange-form form">
         <h2>Send</h2>
 
-        <div class="exchange-form-row">
-          <p class="exchange-rate-text">
-            Exchange rate: 100 USD = 0.00562828 BTC
-          </p>
-          <p class="exchange-min-max-text">
-            min.: 1 776.7417 USD, max.: 17 767.4174 USD
-          </p>
-        </div>
+        <!-- <div class="exchange-form-row">
+						<p class="exchange-rate-text"
+							>Exchange rate: 100 USD = 0.00562828 BTC</p
+						>
+						<p class="exchange-min-max-text"
+							>min.: 1 776.7417 USD, max.: 17 767.4174 USD</p
+						>
+					</div> -->
 
         <div class="exchange-form-row">
           <div class="exchange-currency-container">
+            <p class="exchange-rate-text">
+              Exchange rate: 100 USD = 0.00562828 BTC
+            </p>
             <div class="currency-card-exchange background-white">
               <img src="../assets/img/bitcoin.png" />
               <p>Bitcoin</p>
@@ -48,12 +39,19 @@
             </div>
           </div>
 
-          <div class="exchange-amount">
-            <span>Amount <span class="red">*</span></span>
-            <div class="exchange-amount-input-container">
-              <input placeholder="" value="100" />
-              <div class="exchange-amount-input-container-after">
-                min.: 1 776.7417 USD
+          <div class="exchange-currency-input">
+            <p class="exchange-min-max-text">
+              min.: 1 776.7417 USD, max.: 17 767.4174 USD
+            </p>
+            <div class="exchange-amount">
+              <span class="desctop-element"
+                >Amount <span class="red">*</span></span
+              >
+              <div class="exchange-amount-input-container">
+                <input placeholder="" value="100" />
+                <div class="exchange-amount-input-container-after">
+                  min.: 1 776.7417 USD
+                </div>
               </div>
             </div>
           </div>
@@ -73,7 +71,9 @@
           </div>
 
           <div class="exchange-amount">
-            <span>Amount <span class="red">*</span></span>
+            <span class="desctop-element"
+              >Amount <span class="red">*</span></span
+            >
             <div class="exchange-amount-input-container">
               <input placeholder="" value="100" />
               <div class="exchange-amount-input-container-after">
@@ -147,7 +147,7 @@
         </p>
       </div>
 
-      <div class="welcome-bottom-block-arrow">
+      <div class="welcome-bottom-block-arrow wide-descpot-element">
         <img src="../assets/img/arrow.png" />
       </div>
 
@@ -162,7 +162,7 @@
         </p>
       </div>
 
-      <div class="welcome-bottom-block-arrow">
+      <div class="welcome-bottom-block-arrow wide-descpot-element">
         <img src="../assets/img/arrow.png" />
       </div>
 

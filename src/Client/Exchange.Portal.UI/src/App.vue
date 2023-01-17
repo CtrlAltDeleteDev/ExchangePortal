@@ -1,17 +1,39 @@
 <template>
   <div class="app1">
-    <header>
-      <div>
-        <router-link class="linka" to="/">
-          <img src="../src/assets/img/logoWithText.png"
-        /></router-link>
-      </div>
+    <header style="display: flex; flex-direction: column">
+      <div style="display: flex; flex-direction: row">
+        <div>
+          <router-link class="linka" to="/">
+            <img src="./assets/img/logoWithText.png" />
+          </router-link>
+        </div>
 
-      <nav>
-        <router-link class="linka" to="/rules">Site rules</router-link>
-        <router-link class="linka" to="/contacts">Contacts</router-link>
-        <router-link class="linka" to="/reviews">Reviews</router-link>
-      </nav>
+        <nav class="desctop-element tablet-element">
+          <router-link to="/rules">Site rules</router-link>
+          <router-link to="/contacts">Contacts</router-link>
+          <router-link to="/reviews">Reviews</router-link>
+        </nav>
+        <div class="nav-button-wrapper mobile-element">
+          <button href="" class="nav-btn mobile-menu" id="collapse_navbar">
+            <div class="mobile-burger-menu">
+              <img class="burger-icon" src="./assets/img/burger-menu.png" />
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="content" id="collapse_navbar_content">
+        <nav class="mobile-menu-items">
+          <router-link class="mobile-menu-item" to="/rules"
+            >Site rules</router-link
+          >
+          <router-link class="mobile-menu-item" to="/contacts"
+            >Contacts</router-link
+          >
+          <router-link class="mobile-menu-item" to="/reviews"
+            >Reviews</router-link
+          >
+        </nav>
+      </div>
     </header>
 
     <div class="app">
@@ -21,37 +43,25 @@
     <!-- Footer -->
 
     <footer>
-      <div>
-        <a href="#main" class="footer-logo">
-          <img src="../src/assets/img/logoPlanet.jpeg" />
-          <div>
-            <p class="footer-logo-title"><span>Global</span> exchange</p>
-            <p class="footer-logo-desc">Safe deal - customer confidense</p>
-          </div>
-        </a>
-        <p class="footer-info-text margin-top-50">
-          ©2023 Globalexchange.com — electronic currency exchange service.
-        </p>
-      </div>
-
-      <div>
-        <a href="" class="footer-link">Popular exchange directions</a>
-      </div>
-
-      <div>
-        <a href="" class="footer-link">Menu</a>
-      </div>
-
-      <div>
-        <a href="" class="footer-link">Operating mode</a>
-        <p class="footer-info-text margin-top-20">
-          Opening hours: 09:00 to 24:00 GMT+3 daily
-        </p>
-      </div>
+      <a href="#main" class="footer-logo">
+        <img src="./assets/img/logoPlanet.jpeg" />
+        <div>
+          <p class="footer-logo-title"><span>Global</span> exchange</p>
+          <p class="footer-logo-desc">Safe deal - customer confidense</p>
+        </div>
+      </a>
+      <p class="footer-info-text">
+        © 2023 Globalexchange.com — electronic currency exchange service.
+      </p>
     </footer>
     <!-- Footer -->
   </div>
 </template>
+
+<script>
+import('./assets/js/collapse');
+export default {};
+</script>
 
 <style>
 @import url('./assets/css/style.css');
@@ -62,8 +72,4 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* .linka {
-  text-decoration: none;
-} */
 </style>

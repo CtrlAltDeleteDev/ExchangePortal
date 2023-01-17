@@ -1,17 +1,5 @@
 <template>
   <section class="welcome-section">
-    <!-- <div class="chat-form">
-				<a id="chat-link" class="chat-link focus-in-contract">
-					<p class="chat-link-text"> Write to us, we are online! </p>
-					<img src="../assets/img/leave.png" class="chat-link-img"
-				/></a>
-
-				<div id="chat" class="chat hidden">
-					<div class="chat-messages">sdadas</div>
-					<div class="chat-textarea-wrapper"><textarea></textarea></div>
-				</div>
-			</div> -->
-
     <div class="exchange-container width75persent">
       <h1>Currency exchange</h1>
 
@@ -28,7 +16,7 @@
       </div>
 
       <form class="exchange-form form confirmation">
-        <h2>Send</h2>
+        <h2 class="exchange-form-h1">Send</h2>
 
         <div class="exchange-form-row">
           <div class="confirmation-amount">
@@ -39,7 +27,7 @@
           </div>
         </div>
 
-        <h2>Recieve</h2>
+        <h2 class="exchange-form-h1">Recieve</h2>
 
         <div class="exchange-form-row">
           <div class="confirmation-amount">
@@ -51,7 +39,7 @@
           </div>
         </div>
 
-        <h2>Personal data</h2>
+        <h2 class="exchange-form-h1">Personal data</h2>
 
         <div class="confirmation-amount">
           <p>E-mail: <span>relaxingsoundsforbody@gmail.com</span></p>

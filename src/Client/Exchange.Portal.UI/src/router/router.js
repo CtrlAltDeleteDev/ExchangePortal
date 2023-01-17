@@ -9,6 +9,7 @@ import ReadyOrder from '@/pages/ReadyOrder';
 import CanceledOrder from '@/pages/CanceledOrder';
 import PaidOrder from '@/pages/PaidOrder';
 import NotFound from '@/pages/NotFound';
+import AdminPanel from '@/pages/AdminPanel';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
@@ -47,6 +48,10 @@ const routes = [
   {
     path: '/adminka',
     component: Login,
+  },
+  {
+    path: '/admin-panel',
+    component: AdminPanel,
   },
   {
     path: '/',

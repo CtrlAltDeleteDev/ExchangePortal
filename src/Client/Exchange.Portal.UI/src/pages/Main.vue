@@ -8,7 +8,7 @@
         </div>
 
         <div class="welcome-section-exchange">
-          <div>
+          <div class="welcome-section-exchange-row desctop-element">
             <span class="welcome-section-exchange-title card-width"
               >You send</span
             >
@@ -17,65 +17,76 @@
               >You receive</span
             >
           </div>
-          <div style="box-sizing: border-box">
-            <div
-              id="currency_send"
-              class="welcome-section-exchange-items card-width"
+
+          <div class="welcome-section-exchange-row">
+            <span class="welcome-section-exchange-title mobile-element"
+              >You send</span
             >
-              <div id="selected_send_curreny">
-                <!-- currency send button render here -->
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="send"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/BitcoinBTC.png" />
-                  <p>Bitcoin</p>
-                  <p>BTC</p>
-                </button>
+            <div>
+              <div
+                id="currency_send"
+                class="welcome-section-exchange-items card-width"
+              >
+                <div id="selected_send_curreny">
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="send"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/BitcoinBTC.png" />
+                    <p>Bitcoin</p>
+                    <p>BTC</p>
+                  </button>
+                </div>
+
+                <div id="currency_send_list" class="open-select hidden">
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="send"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/BitcoinBTC.png" />
+                    <p>Bitcoin</p>
+                    <p>BTC</p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="send"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/DaiDai.png" />
+                    <p>Dai Dai</p>
+                    <p></p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="send"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/TronTRX.png" />
+                    <p>Tron</p>
+                    <p>RTX</p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="send"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/DashDASH.png" />
+                    <p>Dash</p>
+                    <p>DASH</p>
+                  </button>
+                </div>
               </div>
 
-              <div id="currency_send_list" class="open-select hidden">
-                <!-- available currencies buttons render here -->
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="send"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/BitcoinBTC.png" />
-                  <p>Bitcoin</p>
-                  <p>BTC</p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="send"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/DaiDai.png" />
-                  <p>Dai Dai</p>
-                  <p></p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="send"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/TronTRX.png" />
-                  <p>Tron</p>
-                  <p>RTX</p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="send"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/DashDASH.png" />
-                  <p>Dash</p>
-                  <p>DASH</p>
-                </button>
+              <div class="card-width">
+                <input class="welcome-section-exchange-input card-width" />
+                <div class="welcome-section-exchange-input-after card-width">
+                  <p>min.: 1 658.7241 USD</p>
+                </div>
               </div>
             </div>
 
@@ -83,89 +94,81 @@
               class="welcome-section-exchange-arrows"
               src="../assets/img/arrows.png"
             />
-            <div
-              id="currency_receive"
-              class="welcome-section-exchange-items card-width"
+            <span class="welcome-section-exchange-title mobile-element"
+              >You receive</span
             >
-              <div id="selected_receive_curreny">
-                <!-- currency receive button render here -->
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="receive"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/BitcoinBTC.png" />
-                  <p>Bitcoin</p>
-                  <p>BTC</p>
-                </button>
+            <div>
+              <div
+                id="currency_receive"
+                class="welcome-section-exchange-items card-width"
+              >
+                <div id="selected_receive_curreny">
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="receive"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/BitcoinBTC.png" />
+                    <p>Bitcoin</p>
+                    <p>BTC</p>
+                  </button>
+                </div>
+
+                <div id="currency_receive_list" class="open-select hidden">
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="receive"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/BitcoinBTC.png" />
+                    <p>Bitcoin</p>
+                    <p>BTC</p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="receive"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/DaiDai.png" />
+                    <p>Dai Dai</p>
+                    <p></p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="receive"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/TronTRX.png" />
+                    <p>Tron</p>
+                    <p>RTX</p>
+                  </button>
+
+                  <button
+                    onclick="onClickCurrency(this)"
+                    data-direction="receive"
+                    class="currency-card-exchange card-width background-dark-grey white"
+                  >
+                    <img src="../assets/img/currency/DashDASH.png" />
+                    <p>Dash</p>
+                    <p>DASH</p>
+                  </button>
+                </div>
               </div>
 
-              <div id="currency_receive_list" class="open-select hidden">
-                <!-- available currencies buttons render here -->
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="receive"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/BitcoinBTC.png" />
-                  <p>Bitcoin</p>
-                  <p>BTC</p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="receive"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/DaiDai.png" />
-                  <p>Dai Dai</p>
-                  <p></p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="receive"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/TronTRX.png" />
-                  <p>Tron</p>
-                  <p>RTX</p>
-                </button>
-
-                <button
-                  onclick="onClickCurrency(this)"
-                  data-direction="receive"
-                  class="currency-card-exchange card-width background-dark-grey white"
-                >
-                  <img src="../assets/img/currency/DashDASH.png" />
-                  <p>Dash</p>
-                  <p>DASH</p>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div style="box-sizing: border-box">
-            <div class="card-width">
-              <input class="welcome-section-exchange-input card-width" />
-              <div class="welcome-section-exchange-input-after card-width">
-                <p>min.: 1 658.7241 USD</p>
-              </div>
-            </div>
-
-            <img class="welcome-section-exchange-arrows" />
-
-            <div class="card-width">
-              <input class="welcome-section-exchange-input card-width" />
-              <div class="welcome-section-exchange-input-after card-width">
-                <p>min.: 0.1 BTC</p>
-                <p>Exchange rate: <b>100 USD = 0.00602873 BTC</b></p>
-                <p>Reserve: <b>68.7213 BTC</b></p>
+              <div class="card-width">
+                <input class="welcome-section-exchange-input card-width" />
+                <div class="welcome-section-exchange-input-after card-width">
+                  <p>min.: 0.1 BTC</p>
+                  <p>Exchange rate: <b>100 USD = 0.00602873 BTC</b></p>
+                  <p>Reserve: <b>68.7213 BTC</b></p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div>
+          <div class="welcome-section-exchange-row">
             <div>
               <button
                 @click="$router.push('/preview')"
@@ -191,7 +194,7 @@
           </p>
         </div>
 
-        <div class="welcome-bottom-block-arrow">
+        <div class="welcome-bottom-block-arrow wide-descpot-element">
           <img src="../assets/img/arrow.png" />
         </div>
 
@@ -206,7 +209,7 @@
           </p>
         </div>
 
-        <div class="welcome-bottom-block-arrow">
+        <div class="welcome-bottom-block-arrow wide-descpot-element">
           <img src="../assets/img/arrow.png" />
         </div>
 
@@ -224,33 +227,6 @@
     </section>
 
     <section class="info-section" id="info-section">
-      <!-- <div class="chat-form">
-        <a id="chat-link" class="chat-link focus-in-contract">
-          <p class="chat-link-text">Write to us, we are online!</p>
-          <img src="../assets/img/leave.png" class="chat-link-img"
-        /></a>
-
-        <div id="chat" class="chat hidden">
-          <div class="chat-messages">
-            The @import rules in the above examples show media-dependent
-            conditions that will need to be true before the linked CSS rules are
-            applied. So for instance, the last @import rule will load the
-            narrow.css stylesheet if the user agent supports display: flex. The
-            media query, using the and operator, further specifies to apply the
-            style rules only to a screen device with a maximum viewport width of
-            400px. Importing CSS rules into a cascade layer The @import rules in
-            the above examples show media-dependent conditions that will need to
-            be true before the linked CSS rules are applied. So for instance,
-            the last @import rule will load the narrow.css stylesheet if the
-            user agent supports display: flex. The media query, using the and
-            operator, further specifies to apply the style rules only to a
-            screen device with a maximum viewport width of 400px. Importing CSS
-            rules into a cascade layer
-          </div>
-          <div class="chat-textarea-wrapper"><textarea></textarea></div>
-        </div>
-      </div> -->
-
       <div class="info-block">
         <img src="../assets/img/clock.png" />
         <div class="info-text-block">

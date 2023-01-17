@@ -24,7 +24,6 @@ from.onclick = showChat;
 
 function showChat(e) {
 	e.preventDefault();
-	console.log("here showCurrenciesList");
 
 	// chat.classList.remove("slide-out-top");
 

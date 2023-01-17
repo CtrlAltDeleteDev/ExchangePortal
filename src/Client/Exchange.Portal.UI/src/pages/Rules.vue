@@ -1,17 +1,6 @@
 <template>
   <div class="">
     <section class="welcome-section" id="reviews">
-      <!-- <div class="chat-form">
-        <a id="chat-link" class="chat-link focus-in-contract">
-          <p class="chat-link-text">Write to us, we are online!</p>
-          <img src="../assets/img/leave.png" class="chat-link-img"
-        /></a>
-
-        <div id="chat" class="chat hidden">
-          <div class="chat-messages">sdadas</div>
-          <div class="chat-textarea-wrapper"><textarea></textarea></div>
-        </div>
-      </div> -->
 
       <div class="width75persent nunito">
         <div class="contacts-container">
@@ -56,47 +45,47 @@
       </div>
 
       <div class="welcome-bottom-block">
-        <div class="welcome-bottom-block-item">
-          <img src="../assets/img/bitcoinCursor.png" />
+				<div class="welcome-bottom-block-item">
+					<img src="../assets/img/bitcoinCursor.png" />
 
-          <h2>Choose currency</h2>
-          <p>
-            Operations on the service are carried out in automatic and
-            semi-automatic modes, guaranteed time for processing applications is
-            5-30 minutes
-          </p>
-        </div>
+					<h2>Choose currency</h2>
+					<p>
+						Operations on the service are carried out in automatic and
+						semi-automatic modes, guaranteed time for processing applications is
+						5-30 minutes
+					</p>
+				</div>
 
-        <div class="welcome-bottom-block-arrow">
-          <img src="../assets/img/arrow.png" />
-        </div>
+				<div class="welcome-bottom-block-arrow wide-descpot-element">
+					<img src="../assets/img/arrow.png" />
+				</div>
 
-        <div class="welcome-bottom-block-item">
-          <img src="../assets/img/phoneCircle.png" />
+				<div class="welcome-bottom-block-item">
+					<img src="../assets/img/phoneCircle.png" />
 
-          <h2>Exchange</h2>
-          <p>
-            A full range of functions provides a safe conversion of electronic
-            currencies, a convenient service that does not cause questions and
-            difficulties when performing an exchange
-          </p>
-        </div>
+					<h2>Exchange</h2>
+					<p>
+						A full range of functions provides a safe conversion of electronic
+						currencies, a convenient service that does not cause questions and
+						difficulties when performing an exchange
+					</p>
+				</div>
 
-        <div class="welcome-bottom-block-arrow">
-          <img src="../assets/img/arrow.png" />
-        </div>
+				<div class="welcome-bottom-block-arrow wide-descpot-element">
+					<img src="../assets/img/arrow.png" />
+				</div>
 
-        <div class="welcome-bottom-block-item">
-          <img src="../assets/img/bitcoinWithHand.png" />
+				<div class="welcome-bottom-block-item">
+					<img src="../assets/img/bitcoinWithHand.png" />
 
-          <h2>Receive your funds</h2>
-          <p>
-            A full range of functions provides a safe conversion of electronic
-            currencies, a convenient service that does not cause questions and
-            difficulties when performing an exchange
-          </p>
-        </div>
-      </div>
+					<h2>Receive your funds</h2>
+					<p>
+						A full range of functions provides a safe conversion of electronic
+						currencies, a convenient service that does not cause questions and
+						difficulties when performing an exchange
+					</p>
+				</div>
+			</div>
     </section>
   </div>
 </template>

@@ -24,7 +24,7 @@
 					</p>
 				</div>
 
-				<div class="welcome-bottom-block-arrow">
+				<div class="welcome-bottom-block-arrow wide-descpot-element">
 					<img src="../assets/img/arrow.png" />
 				</div>
 
@@ -39,7 +39,7 @@
 					</p>
 				</div>
 
-				<div class="welcome-bottom-block-arrow">
+				<div class="welcome-bottom-block-arrow wide-descpot-element">
 					<img src="../assets/img/arrow.png" />
 				</div>
 
