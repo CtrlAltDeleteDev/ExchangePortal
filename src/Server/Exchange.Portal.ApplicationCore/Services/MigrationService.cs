@@ -1,6 +1,5 @@
 using Exchange.Portal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Exchange.Portal.ApplicationCore.Services;
 
@@ -28,7 +27,7 @@ internal class MigrationService : IMigrationService
         _logger.LogInformation("Migration has started");
         await _initiateRateExchange.InstantiateAsync();
 
-        if ((await _applicationDbContext.Database.GetAppliedMigrationsAsync()).Any())
+        if ((await _applicationDbContext.Database.GetPendingMigrationsAsync()).Any())
         {
             _logger.LogInformation("Ef migration's starting");
             

@@ -4,7 +4,7 @@ public static class SignInCommand
 {
     public record User(string Login, string Password) : IRequest<Unit>;
     
-    public class Handler : IRequestHandler<User, Unit>
+    internal sealed class Handler : IRequestHandler<User, Unit>
     {
         private readonly SignInManager<IdentityUser> _signInManager;
 

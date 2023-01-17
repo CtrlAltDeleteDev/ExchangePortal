@@ -3,33 +3,27 @@ name: Deploy back-end project
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'src/Server/**'
 
 jobs:
   deploy:
-    environment: dev
+    environment: dev-web-api
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
-
-      - name: Install .NET 7
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build project
-        run: dotnet build --no-restore
-        
-      - name: Login to registry
-        run: docker login --username=_ --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+      
+      - name: Docker login
+        run: docker login --username=_ --password=${{ vars.HEROKU_API_KEY }} registry.heroku.com
 
       - name: Build docker image
-        run: docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}:webapi .
-
+        run: docker build -f src/Server/Exchange.Portal.Web/Dockerfile -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+        
       - name: Push docker image
-        run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}:webapi
+        run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
+      
+      - name: Publish
+        run: heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}

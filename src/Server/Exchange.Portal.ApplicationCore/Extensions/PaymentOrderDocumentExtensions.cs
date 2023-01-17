@@ -1,11 +1,10 @@
 using Exchange.Portal.ApplicationCore.Features.Payment.Command;
-using Exchange.Portal.Infrastructure.Documents;
 
 namespace Exchange.Portal.ApplicationCore.Extensions;
 
 public static class PaymentOrderDocumentExtensions
 {
-    public static PaymentOrderDocument ToDocument(this CreatePaymentCommand.Payment payment)
+    public static PaymentOrderDocument ToDocument(this CreatePayment.Payment payment)
     {
         return new PaymentOrderDocument
         {

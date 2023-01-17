@@ -21,12 +21,13 @@ public static class ConfigureServices
         {
             options.Connection(connectionString);
             
-            options.AutoCreateSchemaObjects = AutoCreate.All;
+            options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
 
             options.RegisterDocumentType<TokenDocument>();
             options.RegisterDocumentType<PairDocument>();
             options.RegisterDocumentType<ExchangeRateDocument>();
-            
+            options.RegisterDocumentType<InterestRateDocument>();
+            options.RegisterDocumentType<ReviewDocument>();
         }).ApplyAllDatabaseChangesOnStartup();
         
         return serviceCollection;

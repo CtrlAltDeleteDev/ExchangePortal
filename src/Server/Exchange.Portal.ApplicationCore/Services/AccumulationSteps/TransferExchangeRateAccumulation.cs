@@ -1,8 +1,4 @@
-using Exchange.Portal.Infrastructure.Documents;
-using Marten;
-using Microsoft.Extensions.Logging;
-
-namespace Exchange.Portal.ApplicationCore.Services;
+namespace Exchange.Portal.ApplicationCore.Services.AccumulationSteps;
 
 internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
 {
@@ -26,6 +22,8 @@ internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
         await using var session = _documentStore.LightweightSession();
         await foreach (PairDocument pair in pairs.WithCancellation(stoppingToken))
         {
+            DateTimeOffset dateTimeOffsetUtc = _timeProvider.GetDateTimeOffsetUTC();
+            
             ExchangeRateDocument fromTokenIntoUSDT = await session
                 .Query<ExchangeRateDocument>()
                 .Where(x => x.SymbolFrom == pair.SymbolFrom && x.SymbolTo == USDT)
@@ -35,17 +33,18 @@ internal class TransferExchangeRateAccumulation : IExchangeRateAccumulation
                 .Query<ExchangeRateDocument>()
                 .Where(x => x.SymbolFrom == pair.SymbolTo && x.SymbolTo == USDT)
                 .FirstAsync(token: stoppingToken);
-            
+
             ExchangeRateDocument newTransferRate = new()
             {
                 Id = Guid.NewGuid().ToString(),
                 SymbolFrom = pair.SymbolFrom,
                 SymbolTo = pair.SymbolTo,
                 Price = fromTokenIntoUSDT.Price / toTokenIntoUSDT.Price,
-                Timestamp = _timeProvider.GetDateTimeOffsetUTC()
+                Timestamp = dateTimeOffsetUtc
             };
 
-            pair.Configuration.LastRefresh = _timeProvider.GetDateTimeOffsetUTC();
+            pair.Configuration.LastRefresh = dateTimeOffsetUtc;
+            pair.Configuration.NextRun = dateTimeOffsetUtc.AddMinutes(pair.Configuration.RefreshInterval);
             
             session.Store(newTransferRate);
             session.Store(pair);

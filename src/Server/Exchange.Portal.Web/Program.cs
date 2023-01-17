@@ -24,7 +24,7 @@ try
 
     ApiConfigurationSettings settings = builder.Services.AddSettings(builder.Configuration);
 
-    builder.Services.AddApplication();
+    builder.Services.AddApplication(settings.BinanceClient);
     builder.Services.AddInfrastructure(settings.ConnectionStrings.DefaultConnection);
     builder.Services.AddPresentation();
 
