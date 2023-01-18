@@ -103,7 +103,7 @@ textarea {
 }
 
 .width75persent {
-  width: 75%;
+  width: 100%;
 }
 
 .width40persent {
@@ -813,6 +813,7 @@ footer > div {
 .reviev-item-content {
   margin-top: 10px;
   font-weight: 400;
+  text-align: justify;
 }
 
 .review-pagination {
@@ -1470,7 +1471,7 @@ li {
   /* CONTANCTS ===> */
 
   .contacts-container {
-    text-align: center;
+    text-align: justify;
   }
 
   .contacts-btns-contaiter {
@@ -1486,7 +1487,7 @@ li {
   .contacts-container .contact-btn {
     margin: auto 5px;
     width: 100%;
-    max-width: 350px;
+    /* max-width: 350px; */
 
     font-size: 15px;
     line-height: 30px;
