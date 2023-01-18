@@ -782,6 +782,10 @@ footer > div {
 
 /* REVIEWS ===> */
 
+.reviews-container {
+  width: 75%;
+}
+
 .reviev-item {
   border-radius: 19px;
   border-width: 1px;
@@ -931,6 +935,7 @@ footer > div {
   font-size: 13px;
   line-height: 15px;
   font-weight: 400;
+  text-align: left;
 }
 
 .exchange-min-max-text {
@@ -1076,10 +1081,6 @@ li {
 
 .currency-title-and-logo span {
   margin-left: 10px;
-}
-
-.currency-title-and-logo img {
-  scale: 0.6;
 }
 
 /* EXCHANGE_CONFIRMATION  <=== */
@@ -1325,11 +1326,6 @@ li {
     height: auto;
   }
 
-  .exchange-form-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .info-section-bottom-text {
     margin-top: 15px;
   }
@@ -1347,6 +1343,10 @@ li {
 
   .info-section {
     padding-bottom: 40px;
+  }
+
+  .currency-title-and-logo img {
+    width: 30px;
   }
 }
 
@@ -1473,12 +1473,20 @@ li {
     text-align: center;
   }
 
+  .contacts-btns-contaiter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .contacts-container .contact-btn:not(:last-child) {
     margin-right: 5px;
   }
 
   .contacts-container .contact-btn {
     margin: auto 5px;
+    width: 100%;
+    max-width: 350px;
 
     font-size: 15px;
     line-height: 30px;
@@ -1510,6 +1518,10 @@ li {
     text-align: center;
   }
 
+  .attention-container p {
+    text-align: justify;
+  }
+
   .exchange-currency-container {
     width: 100%;
   }
@@ -1534,15 +1546,20 @@ li {
 
   .exchange-info-text li {
     margin-top: 7px;
-    text-align: center;
+    text-align: justify;
+    list-style-type: disc;
   }
 
   /* EXCHANGE_FORM <=== */
 
   /* EXCHANGE_PAYMEBT ===> */
 
+  /* .payment-btn-container{
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  } */
+
   .payment-btn-container button {
-    width: 40%;
+    /* width: 40%; */
     min-width: 120px;
     font-size: 16px;
     padding-left: 0;
@@ -1550,8 +1567,24 @@ li {
   }
   /* EXCHANGE_PAYMEBT <=== */
 
+  .confirmation-amount {
+    width: 200px;
+  }
+
   .confirmation-amount p {
     text-align: left;
+  }
+
+  .currency-title-and-logo {
+    /* margin-top: 4px; */
+  }
+
+  .currency-title-and-logo img {
+    width: 20px;
+  }
+
+  .currency-title-and-logo span {
+    margin-left: 2px;
   }
 
   .make-payment-guide {
@@ -1560,6 +1593,53 @@ li {
 
   .payment-btn-container-center {
     padding: 30px;
+  }
+
+  /* EXCHANGE_CONFIRMATION ===> */
+  .exchange-form-final-text {
+    padding-left: 0;
+  }
+
+  .exchange-form button {
+    width: 100%;
+    max-width: 350px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* EXCHANGE_CONFIRMATION <=== */
+
+  .payment-amount {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .payment-amount p {
+    text-align: center;
+  }
+
+  .payment-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .payment-btn-container button {
+    margin: auto;
+    margin-top: 5px;
+  }
+
+  .reviews-container {
+    width: 100%;
+  }
+
+  .review-form p {
+    margin-left: 0;
+  }
+
+  .review-btn {
+    margin: auto;
+    margin-top: 15px;
+    width: 100%;
   }
 }
 
